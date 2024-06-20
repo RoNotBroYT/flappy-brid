@@ -1,1 +1,47 @@
 pip install pygame
+
+import pygame
+import random
+
+# Initialize pygame
+pygame.init()
+
+# Screen dimensions
+SCREEN_WIDTH = 400
+SCREEN_HEIGHT = 600
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
+
+# Game settings
+GRAVITY = 0.5
+FLAP_STRENGTH = -10
+PIPE_GAP = 150
+PIPE_WIDTH = 80
+PIPE_SPEED = 3
+
+# Load assets
+BIRD_IMAGE = pygame.image.load("bird.png")
+PIPE_IMAGE = pygame.image.load("pipe.png")
+BACKGROUND_IMAGE = pygame.image.load("background.png")
+
+# Bird class
+class Bird:
+    def __init__(self):
+        self.image = BIRD_IMAGE
+        self.x = 50
+        self.y = SCREEN_HEIGHT // 2
+        self.width = self.image.get_width()
+        self.height = self.image.get_height()
+        self.velocity = 0
+
+    def draw(self, screen):
+        screen.blit(self.image, (self.x, self.y))
+
+    def update(self):
+        self.velocity += GRAVITY
+        self.y += self.velocity
+
+    def flap
